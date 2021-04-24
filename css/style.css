@@ -4,8 +4,32 @@ body{
   font-size: 16pt; 
   font-family: "Montserrat", "sans-serif";
   /* background-image: url("../images/background.jpg"); */
+  
 }
 
+#logo {
+  animation: fadeInAnimation ease 4s; /* change this # to make it longer/shorter */
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+   }
+}
+
+/* Used https://www.geeksforgeeks.org/how-to-create-fade-in-effect-on-page-load-using-css/#:~:text=Use%20animation%20and%20transition%20property,the%20opacity%20set%20to%201. */
+
+/*Add media query to handle reduced-motion*/
+@media (prefers-reduced-motion:reduce){
+  #logo{
+    animation: none;
+  }
+}
 
 header{
   background-color: white;
@@ -37,7 +61,7 @@ a:link{
 
 a:hover{
 	text-decoration: none;
-	border-bottom: 1px solid#FFCB05;
+  border-bottom: 1px solid#FFCB05;
 }
 
 a:visited{
@@ -159,6 +183,7 @@ header p{
     font-weight: bolder;
     color: #FFCB05;
     text-decoration: underline #FFCB05;
+    text-transform: uppercase;
 }
 
 .me{
@@ -216,58 +241,8 @@ ul{
 }
 
 
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 400px;
-  margin: auto;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
-}
-
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  text-align: center;
-  transform-style: preserve-3d;
-}
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card:focus .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-}
-
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-  background-color: transparent;
-  color: black;
-}
-
-/* Style the back side */
-.flip-card-back {
-  background-color:  #2B4257;
-  color: white;
-  transform: rotateY(180deg);
-}
-
-
 /*Requirement 4*/
-.price{
+.homecont{
   min-height: 300px;
   display: flex;
   flex-wrap: wrap;
@@ -276,7 +251,7 @@ ul{
 }
 
 /*Requirement 5*/
-.package {
+.homebox {
 margin: 12px;
 background: #fff;
 border: 2px solid #00274C;
@@ -286,24 +261,27 @@ flex-basis: 400px;
 }
 
 /*Requirement 6*/
-.package > header
+.homebox > header
 {
 background: #FFCB05;
 border-radius: 7px 7px 0 0;
 padding: 0px;
 }
 
-.package a{
+.homebox a{
   color:#00274C;
   font-family: "Montserrat", "sans-serif";
   font-weight: bolder;
 }
 
 
-.package p{
+.homebox p{
   padding: 20px;
 }
 
+.homebox button{
+  margin: 0 auto;
+}
 
 .exercise-container{
   min-height: 300px;
@@ -329,6 +307,7 @@ flex-basis: 250px;
 border-radius: 7px 7px 0 0;
 }
 
+
 .exercise a{
   color:#00274C;
   font-family: "Montserrat", "sans-serif";
@@ -338,6 +317,10 @@ border-radius: 7px 7px 0 0;
 
 .exercise p{
   padding: 20px;
+}
+
+.exercise button{
+  margin: 0 auto;
 }
 
 .exercise h3{
@@ -386,5 +369,25 @@ border-radius: 7px 7px 0 0;
 
   #adapt, #polo, #im{
     width:55%;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .gallery{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    height:auto;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
+
+  nav li{
+    display:inline;
+    padding-right:60px;
+  
   }
 }
